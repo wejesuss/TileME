@@ -15,6 +15,18 @@
 
 TileMe allows you to draw with the mouse using a pre-configured set of _"colors"_ (actually a set of tile), you can draw block-by-block dynamically, save and download your drawing.
 
+With TileMe you can copy a tile (Ctrl+Click), a la the below:
+
+<p align="center">
+  <img src="https://ik.imagekit.io/vhx2sevqtq/copy-tile_02c9TPa11.gif" />
+</p>
+
+You can delete a tile (Shift+Click):
+
+<p align="center">
+  <img src="https://ik.imagekit.io/vhx2sevqtq/delete-tile_yt0y4FDQu.gif" />
+</p>
+
 ## :interrobang: Reason
 
 The first version of this project was based on [this tutorial](https://youtu.be/IYgZMIB7_PM 'Watch the video tutorial').
