@@ -33,6 +33,12 @@ Change the layer:
   <img src="https://ik.imagekit.io/vhx2sevqtq/layers_ZDqYn3liC.gif" />
 </p>
 
+Prevent mistakes, blocking the layer:
+
+<p align="center">
+  <img src="https://ik.imagekit.io/vhx2sevqtq/block-layer_U9wg1XnCv.gif" />
+</p>
+
 Export the image and clear the entire drawing:
 
 <p align="center">
