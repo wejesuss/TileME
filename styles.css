@@ -28,6 +28,7 @@ body {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   padding-bottom: 16px;
 }
+
 .card header {
   display: flex;
   justify-content: space-between;
@@ -36,12 +37,15 @@ body {
   margin-bottom: 1em;
   padding: 16px;
 }
+
 .card header h1 {
   margin: 0;
 }
+
 .card header .button-as-link {
   margin-right: 1em;
 }
+
 .card aside {
   padding-left: 16px;
   padding-right: 16px;
@@ -74,9 +78,27 @@ canvas {
 
 .layers {
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 16px;
   padding: 0;
 }
+
+.layers li {
+  display: flex;
+  align-items: center;
+}
+
+.layers li .padlock {
+  cursor: pointer;
+  background-image: url('/padlock.svg');
+  width: 24px;
+  height: 24px;
+}
+
+.layers li .padlock.close {
+  background-image: url('/lock.svg');
+  transition: all 0.2s;
+}
+
 .layers button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -87,10 +109,11 @@ canvas {
   border: 0;
   padding: 8px 0;
   display: block;
-  width: 100%;
+  width: 20%;
   text-align: left;
   cursor: pointer;
 }
+
 .layers button.active {
   font-weight: bold;
   color: #0884f1;
@@ -125,4 +148,10 @@ label {
   margin-bottom: 0.5em;
   font-weight: bold;
   display: block;
+}
+
+.attribution {
+  font-size: 10px;
+  padding: 8px;
+  text-align: center;
 }

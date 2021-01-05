@@ -11,6 +11,14 @@ const HEIGHT = canvas.height;
 let selection = [0, 0];
 let currentLayer = 0;
 let isMouseDown = false;
+let isLayerBlocked = [
+  //Bottom
+  false,
+  // Middle
+  false,
+  // Top
+  false,
+];
 let layers = [
   //Bottom
   {
@@ -42,6 +50,15 @@ function setLayer(newLayer) {
   }
 
   document.querySelector(`.layer[tile-layer="${newLayer}"]`).classList.add('active');
+}
+
+function setLayerIsBlock(layer) {
+  const layerNumber = Number(layer);
+  isLayerBlocked[layerNumber] = !isLayerBlocked[layerNumber];
+
+  document
+    .querySelector(`.padlock[padlock-layer="${layer}"]`)
+    .classList.toggle('close', isLayerBlocked[layerNumber]);
 }
 
 function updateSelection() {
@@ -90,6 +107,10 @@ function setMouseIsFalse() {
 }
 
 function toggleTile(event) {
+  if (isLayerBlocked[currentLayer]) {
+    return;
+  }
+
   const clicked = getCoordinates(event);
   const key = clicked[0] + '-' + clicked[1];
 
