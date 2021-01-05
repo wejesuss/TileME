@@ -27,6 +27,18 @@ You can delete a tile (Shift+Click):
   <img src="https://ik.imagekit.io/vhx2sevqtq/delete-tile_yt0y4FDQu.gif" />
 </p>
 
+Change the layer:
+
+<p align="center">
+  <img src="https://ik.imagekit.io/vhx2sevqtq/layers_ZDqYn3liC.gif" />
+</p>
+
+Export the image and clear the entire drawing:
+
+<p align="center">
+  <img src="https://ik.imagekit.io/vhx2sevqtq/export-clear-canvas_hryvGxZSX.gif" />
+</p>
+
 ## :interrobang: Reason
 
 The first version of this project was based on [this tutorial](https://youtu.be/IYgZMIB7_PM 'Watch the video tutorial').
