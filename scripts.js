@@ -5,6 +5,8 @@ const tilesetSelection = document.querySelector('.tileset-container-selection');
 
 const IMG_SOURCE = 'TileEditorSpritesheet.2x_2.png';
 const SIZE_OF_CROP = 32;
+const WIDTH = canvas.width;
+const HEIGHT = canvas.height;
 
 let selection = [0, 0];
 let currentLayer = 0;
@@ -57,11 +59,11 @@ function getCoordinates(event) {
 
 function draw() {
   const ctx = getContext();
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
   layers.forEach((layer) => {
     Object.keys(layer).forEach((key) => {
-      const [positionX, posiionY] = key.split('-').map(Number);
+      const [positionX, positionY] = key.split('-').map(Number);
       const [tilesheetX, tilesheetY] = layer[key];
 
       ctx.drawImage(
@@ -71,7 +73,7 @@ function draw() {
         SIZE_OF_CROP,
         SIZE_OF_CROP,
         positionX * SIZE_OF_CROP,
-        posiionY * SIZE_OF_CROP,
+        positionY * SIZE_OF_CROP,
         SIZE_OF_CROP,
         SIZE_OF_CROP
       );
@@ -90,8 +92,11 @@ function setMouseIsFalse() {
 function toggleTile(event) {
   const clicked = getCoordinates(event);
   const key = clicked[0] + '-' + clicked[1];
+
   if (event.shiftKey) {
     removeTile(key);
+  } else if (event.ctrlKey) {
+    getTile(key);
   } else {
     addTile(key);
   }
@@ -101,6 +106,15 @@ function toggleTile(event) {
 
 function addTile(key) {
   layers[currentLayer][key] = selection;
+}
+
+function getTile(key) {
+  const clicked = layers[currentLayer][key];
+
+  if (clicked) {
+    selection = clicked;
+    updateSelection();
+  }
 }
 
 function removeTile(key) {
@@ -124,7 +138,7 @@ function exportImage() {
 
 tilesetContainer.addEventListener('mousedown', (e) => {
   selection = getCoordinates(e);
-  updateSelection(selection);
+  updateSelection();
 });
 
 canvas.addEventListener('mousedown', setMouseIsTrue);
