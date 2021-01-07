@@ -11,7 +11,7 @@ const HEIGHT = canvas.height;
 let selection = [0, 0];
 let currentLayer = 0;
 let isMouseDown = false;
-let isLayerBlocked = [
+const isLayerBlocked = [
   //Bottom
   false,
   // Middle
@@ -30,6 +30,7 @@ let layers = [
   //Top
   {},
 ];
+let stateHistory = [{}, {}, {}];
 
 function preset() {
   setLayer(0);
@@ -113,6 +114,17 @@ function toggleTile(event) {
 
   const clicked = getCoordinates(event);
   const key = clicked[0] + '-' + clicked[1];
+  const isArray = (likely) => Array.isArray(likely) && likely[0] !== undefined;
+
+  if (event.altKey) {
+    if (event.type === 'mousedown') {
+      applyCtrlZ(key, isArray);
+    }
+
+    return;
+  }
+
+  updateStateHistory(key, isArray);
 
   if (event.shiftKey) {
     removeTile(key);
@@ -142,8 +154,37 @@ function removeTile(key) {
   delete layers[currentLayer][key];
 }
 
+function applyCtrlZ(key, isArray) {
+  const tileHistory = stateHistory[currentLayer][key];
+
+  if (isArray(tileHistory)) {
+    const lastSelected = stateHistory[currentLayer][key].pop();
+
+    if (isArray(lastSelected)) {
+      selection = lastSelected;
+      updateSelection();
+      addTile(key);
+      draw();
+    }
+  }
+}
+
+function updateStateHistory(key, isArray) {
+  const tileHistory = stateHistory[currentLayer][key];
+
+  const selected = layers[currentLayer][key];
+  if (isArray(tileHistory)) {
+    if (selected && !(selected[0] === selection[0] && selected[1] === selection[1])) {
+      stateHistory[currentLayer][key].push(selected);
+    }
+  } else {
+    stateHistory[currentLayer][key] = [[5, 17]];
+  }
+}
+
 function clearCanvas() {
   layers = [{}, {}, {}];
+  stateHistory = [{}, {}, {}];
   draw();
 }
 
