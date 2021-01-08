@@ -39,6 +39,12 @@ Prevent mistakes, blocking the layer:
   <img src="https://ik.imagekit.io/vhx2sevqtq/block-layer_U9wg1XnCv.gif" />
 </p>
 
+Undo actions (Alt+Click):
+
+<p align="center">
+  <img src="https://ik.imagekit.io/vhx2sevqtq/ctrl_z_j5RMC1y3-T.gif" />
+</p>
+
 Export the image and clear the entire drawing:
 
 <p align="center">
